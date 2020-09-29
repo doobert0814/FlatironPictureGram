@@ -5,3 +5,37 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.destroy_all
+Picture.destroy_all 
+Tag.destroy_all
+
+[1,2,3].each do |num|
+    User.create(
+      username:"user#{num}",
+      email: "user#{num}@example.com",
+      password: "test123"
+    )
+  end
+   
+  ["Nature", "NYC", "Art", "Humor"].each do |tag_name|
+    Tag.create(name: tag_name)
+  end
+   
+  array = ["https://randomuser.me/api/portraits/lego/3.jpg",
+            "https://randomuser.me/api/portraits/lego/1.jpg",
+            "https://randomuser.me/api/portraits/lego/8.jpg",
+            "https://randomuser.me/api/portraits/lego/2.jpg",
+            "https://randomuser.me/api/portraits/lego/4.jpg",
+            "https://randomuser.me/api/portraits/lego/5.jpg",
+            "https://randomuser.me/api/portraits/lego/6.jpg",
+            "https://randomuser.me/api/portraits/lego/7.jpg",
+            "https://randomuser.me/api/portraits/lego/9.jpg"]
+   
+  4.times {Picture.create( 
+    img_url: array.sample,
+    title: "Saw a dolphin!",
+    owner_id: User.first.id
+  )}
+
+  puts "SEEDED"
