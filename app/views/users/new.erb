@@ -1,39 +1,34 @@
 <div class="mainContent">
   <div class="grid">
     <h1 class="largeHeader">Sign up</h1>
-    <p class="centeredDescription col_4">Already signed up? You can <a href="">log in here.</a></p>
+    <p class="centeredDescription col_4">Already signed up? You can <%= link_to 'log in here', '/login' %></p>
     <div class="col_1">
-      <form class="signupForm">
+      
 
             <%= form_for @user do |f| %>
-            <%= f.label :email %>
-            <%= f.text_field :email %><br>
+                <%= f.label :email %>
+                <%= f.text_field :email %><br>
 
-            <%= f.label :username %>
-            <%= f.text_field :username %><br>
+                <%= f.label :username %>
+                <%= f.text_field :username %><br>
 
-            <%= f.label :password %>
-            <%= f.password_field :password %><br>
+                <%= f.label :password %>
+                <%= f.password_field :password %><br>
 
-            <%= f.label :password_confirmation %>
-            <%= f.password_field :password_confirmation %><br>
-    
-    <%= f.submit "create"%>
-<%end%>
+                <%= f.label :password_confirmation %>
+                <%= f.password_field :password_confirmation %><br>
 
-      </form>
+                <%= f.submit "create"%>
+            <%end%>
+
+            <% if flash[:errors] %>
+                <% flash[:errors].each do |error|%>
+                <p style="color:red" > <%= error %> </p>
+                <% end %>
+            <% end %>
+
+      
 
     </div><!-- end column 2 contact form -->
 
-    <div class="col_2">
-      <h4>Upload Profile Picture</h4>
-      <div class="placeholderPic"></div>
-      <a href="" class="secondaryButton uploadButton">Choose photo from a url</a><br>
-    </div><!-- end 2 column upload profile pic -->
-
-    <div class="col_4">
-      <a href="" class="button createAccount">Create account</a>
-    </div>
-
-  </div><!-- end grid -->
-</div><!-- end mainContent -->
+    

@@ -1,8 +1,8 @@
-<h1><i>Welcome</i></h1>
+<h1><i>All users photos </i></h1>
 
 
-<%= @pictures.each do |picture| %>
-    <%= link_to users_path do %>
+<% @pictures.each do |picture| %>
+    <%= link_to '/users' do %>
         <%= image_tag picture.img_url%>
     <%end%>
 <%end%>

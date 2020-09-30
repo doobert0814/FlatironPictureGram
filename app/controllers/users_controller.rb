@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
-    
+    skip_before_action :authorized, only: [:new, :create]
+    # before_action :get_user, only: [:show, :edit, :update, :destroy]
 
     def index
         @users = User.all
+        @pictures = Picture.all
     end
     
     def show 
@@ -12,24 +14,33 @@ class UsersController < ApplicationController
 
     def new 
         @user = User.new
-        @picture = Picture.all
     end
 
     def create 
-        byebug
         @user = User.create(user_params)
         if @user.valid?
-            redirect_to @user
+            session[:user_id] = @user.id
+            redirect_to '/welcome'
         else 
             flash[:errors] = @user.errors.full_messages
-            redirect_to new_user_path
+            redirect_to '/signup'
         end
+    end
+
+    def destroy 
+        @user = User.find(params[:id])
+        @user.destroy
+        redirect_to '/guest/welcome'
     end
 
     private 
 
+    # def get_user
+    #     @user = User.find(params[:id])
+    #     byebug
+    # end
+
     def user_params
-        byebug
-        params.permit!
+        params.require(:users).permit!
     end
 end

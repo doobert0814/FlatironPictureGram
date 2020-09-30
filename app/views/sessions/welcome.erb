@@ -1,0 +1,12 @@
+<h1>Welcome to Flatiron-a-gram</h1>
+<% if logged_in? %>
+    <h1>You are Logged In, <%= current_user.username %></h1>
+        
+    
+<%end%>
+
+<%= button_to "Sign out", '/signout', method: :destroy%>
+<%= button_to "All users photos", '/pictures', method: :get%>
+<%= button_to "add a picture", "/addphoto/#{session[:user_id]}", method: :patch%>
+<%= button_to "Delete Account", "/delete/#{session[:user_id]}", method: :destroy%>
+<%#<%= button_to "Sign Up", '/users/new', method: :get%>
