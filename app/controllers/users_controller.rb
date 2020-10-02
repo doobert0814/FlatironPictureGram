@@ -8,8 +8,9 @@ class UsersController < ApplicationController
     end
     
     def show 
-        @user = User.find(user_params)
-        byebug
+        @user = User.find(params[:id])
+        @pictures = @user.pictures
+        @comments = @user.comments
     end
 
     def new 
@@ -41,6 +42,6 @@ class UsersController < ApplicationController
     # end
 
     def user_params
-        params.require(:users).permit!
+        params.require(:user).permit!
     end
 end

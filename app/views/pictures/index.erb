@@ -2,7 +2,8 @@
 
 
 <% @pictures.each do |picture| %>
-    <%= link_to '/users' do %>
+    <%= link_to picture_path(picture) do %>
         <%= image_tag picture.img_url%>
+        <%#need to sort by most recent%>
     <%end%>
 <%end%>

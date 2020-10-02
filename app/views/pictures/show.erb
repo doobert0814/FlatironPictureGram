@@ -1,0 +1,28 @@
+<%#want to show the picture, tags, comments, ability to add new comment%>
+
+<%= image_tag @picture.img_url%>
+
+<h3>Comments: <% @picture.comments.each do |comment| %>
+    <%= comment.comment %>
+<%end%>
+
+<%= form_for @comment do |f| %>
+
+<%= f.label :comment %>
+<%= f.text_field :comment %>
+
+<%= f.submit%>
+<% end %>
+
+<% @picture.tags.each do |tag| %>
+        <div><%= link_to tag.name,"/tags/#{tag.id}"%></div>
+<%end%>
+
+<%= button_to "View your profile", "/users/#{session[:user_id]}", method: :get%>
+<%= button_to "View tags", "/tags", method: :get%>
+<%= button_to "Sign out", '/signout', method: :destroy%>
+<%= button_to "All users photos", '/pictures', method: :get%>
+<%= button_to "add a picture", "/pictures/new", method: :get%>
+<%= button_to "Delete Account", "/delete/#{session[:user_id]}", method: :destroy%>
+
+

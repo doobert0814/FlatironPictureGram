@@ -17,6 +17,12 @@ Tag.destroy_all
       password: "test123"
     )
   end
+
+  # comments = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  #             "Mauris tristique sapien vitae nisl viverra ultricies.",
+  #             "Donec ut sem quis neque tempor venenatis nec ut risus.",
+  #             "Praesent gravida nibh id mattis efficitur.",
+  #             "Morbi accumsan leo in massa consectetur efficitur."]
    
   ["Nature", "NYC", "Art", "Humor"].each do |tag_name|
     Tag.create(name: tag_name)
@@ -33,9 +39,10 @@ Tag.destroy_all
             "https://randomuser.me/api/portraits/lego/9.jpg"]
    
   4.times {Picture.create( 
-    img_url: array.sample,
+    img_url: array.sample,#each{|photo|puts photo},
     title: "Saw a dolphin!",
     owner_id: User.first.id
+    # comment: Comment.first.id
   )}
 
   puts "SEEDED"

@@ -22,6 +22,10 @@ class SessionsController < ApplicationController
 
      def destroy
         log_out_user!
-        redirect_to '/guest/welcome'
+        redirect_to '/'
     end 
+
+    def guest_welcome
+
+    end
 end

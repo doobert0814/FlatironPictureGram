@@ -1,8 +1,9 @@
 <% @users.each do |user|%>
 <%= user.email%>
 <%= user.username%>
+<%end%>
 
-
-
+<% @pictures.each do |picture|%>
+<%= picture.owner_id%>
 <%end%>
 

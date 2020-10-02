@@ -9,4 +9,8 @@ class User < ApplicationRecord
 
 
     has_secure_password
+
+    def received_comments
+        self.comments
+    end
 end

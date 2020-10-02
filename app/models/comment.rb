@@ -1,5 +1,4 @@
 class Comment < ApplicationRecord
-    t.string :name
-    t.belongs_to :user
-    t.belongs_to :picture
+   belongs_to :user
+   belongs_to :picture
 end

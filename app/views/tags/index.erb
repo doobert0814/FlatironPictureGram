@@ -1,0 +1,7 @@
+<h1> All Tags</h1>
+<%= button_to "Home", "/welcome", method: :get%>
+<%= button_to "View Most Popular Tags", '/tags/most_popular', method: :get%>
+<% @tags.each do |tag| %>
+<div><%= link_to tag.name, "/tags/#{tag.id}" %></div>   
+<%end%>
+

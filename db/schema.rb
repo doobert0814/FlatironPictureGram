@@ -14,14 +14,13 @@ ActiveRecord::Schema.define(version: 2020_09_29_004245) do
 
   create_table "comments", force: :cascade do |t|
     t.string "comment"
-    t.integer "picture"
-    t.integer "owned_id"
+    t.integer "picture_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "picture_tags", force: :cascade do |t|
-    t.string "name"
     t.integer "picture_id"
     t.integer "tag_id"
     t.datetime "created_at", precision: 6, null: false

@@ -1,5 +1,17 @@
 <%= form_for @picture do |f| %>
-<%= f.label :url %>
-<%= f.text_field :url %>
+    <%= f.label :img_url %>
+    <%= f.text_field :img_url %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.label :tag_name%>
+    <%= f.text_field :tag_name%>
+    
+
+    <%= f.collection_check_boxes :tag_ids, @tags, :id, :name %>
+
+    <%= f.submit %>
   
 <% end %>
+

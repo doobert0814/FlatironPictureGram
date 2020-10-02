@@ -6,9 +6,17 @@ Rails.application.routes.draw do
 
   resources :pictures 
 
-  get '/users/new', to: 'users#new', as: 'users'
+  resources :users
 
-  get '/users', to: 'users#show'
+  resources :tags
+
+  resources :comments
+
+  post '/received_comments' => 'user#received_comments', as: 'received_comments'
+
+  post '/trending' => 'tag#trending', as: 'trending'
+
+  post '/most_popular' => 'tag#most_popular', as: 'most_popular'
 
   get '/signup', to: 'users#new'
 
@@ -16,17 +24,11 @@ Rails.application.routes.draw do
 
   get 'login', to: 'sessions#new'
 
-  post '/users/new', to: 'users#create'
-
   get 'welcome', to: 'sessions#welcome'
-
-  get 'guest/welcome', to: 'sessions#guest_welcome'
 
   delete '/signout', to: 'sessions#destroy'
 
   post '/signout', to: 'sessions#destroy'
-
-  patch '/addphoto/:id', to: 'pictures#create'
 
   get 'authorized', to: 'sessions#page_requires_login'
 

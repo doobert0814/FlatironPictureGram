@@ -1,8 +1,7 @@
-<h1>Welcome to Flatiron-a-gram</h1>
-<% if logged_in? %>
-    <h1>You are Logged In, <%= current_user.username %></h1>
-    
-    
+<h1><%= @tag.name %><h1>
+
+<% @tag.pictures.each do |picture|%>
+    <div><%= image_tag picture.img_url%></div>
 <%end%>
 
 <%= button_to "View your profile", "/users/#{session[:user_id]}", method: :get%>
